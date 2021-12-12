@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_RECIPES,
+import {GET_RECIPES, GET_RECIPES_ID,  GET_TYPES
 } from './TypesActions.js'
 
 
@@ -17,6 +17,43 @@ import {GET_RECIPES,
         })
     }
 }
+
+export function getTypes() {
+    return function (dispatch) {
+        try {
+            axios.get(`http://localhost:3001/types`)
+            .then(types => 
+                 dispatch({
+                type: GET_TYPES,
+                payload: types.data
+                })
+            )
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+
+export function getRecipesId(id) {
+    return async function (dispatch) {
+        try {
+            let detail = await axios.get(`http://localhost:3001/recipes/${id}`)
+            return dispatch({
+                type: GET_RECIPES_ID,
+                payload: detail.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+
+
+
+
+
 
 // export function postRecipes(payload){
 //     console.log(payload)

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 import { getRecipesAll} from '../actions/index'
-import{ HomeContainer,  LogoSVG, CreateRecipeSVG, LogoDietsSVG, TextDietsSVG, ContenedorDiets }from './HomeStyled'
+import  { HomeContainer, CreateRecipeSVG,  LogoSVG, LogoDietsSVG, TextDietsSVG, ContenedorDiets }from './HomeStyled'
 import SearchBar from './SearchBar'
 
 function Home() {
@@ -14,11 +15,19 @@ function Home() {
             <>
               <SearchBar/>
               <LogoSVG/>
-              <CreateRecipeSVG/>
-              <ContenedorDiets>
-                <LogoDietsSVG/>
-                <TextDietsSVG/>
-              </ContenedorDiets>
+              
+              <Link to='/create'>
+                  <CreateRecipeSVG/>
+              </Link>
+                 
+              <Link to='/ditail'>
+                <ContenedorDiets>
+                  <LogoDietsSVG/>
+                  <TextDietsSVG/>
+                </ContenedorDiets>
+              </Link>
+
+
 
             </>
     
