@@ -44,28 +44,4 @@ router.post('/', async (req, res) => {
 module.exports = router
 
 
-  // router.post('/', async (req, res) => {
-//     let{ name, summary,score, healthScore, image, steps, diets} = req.body
-
-//     try{
-//         let recipeCreate = await Recipe.create({ 
-//             name,
-//             summary,
-//             score,
-//             healthScore,
-//             image,
-//             steps,
-//         })
-
-//         let dietDB = await Diet.findAll({ 
-//             where: {name: diets}
-//         })
-
-//         recipeCreate.addDiet(dietDB)
-//         res.send('Succesfull')
-//     }catch(error){
-//         res.status(400).json({message: error?.message | 'Error en carga de datos'})
-//     }
-// })
-
 

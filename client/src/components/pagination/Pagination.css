@@ -1,0 +1,14 @@
+.pagedButton {
+  background: #09cee0;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  color: antiquewhite;
+  font-size: 15px;
+  background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
+}
+
+.pagedButton:hover {
+  background: #09cee0;
+  box-shadow: 0 0 10px #09cee0, 0 0 40px #09cee0, 0 0 80px #09cee0;
+}

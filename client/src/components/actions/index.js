@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_RECIPES, GET_RECIPES_ID,  GET_TYPES
+import {GET_RECIPES, GET_RECIPES_ID,  GET_TYPES, GET_DATABASE,GET_STATE_ID 
 } from './TypesActions.js'
 
 
@@ -50,22 +50,40 @@ export function getRecipesId(id) {
 }
 
 
+export function getDatabase() {
+    return async function (dispatch) {
+        try {
+            let dataBase = await axios.get(`http://localhost:3001/recipes/dates`)
+            return dispatch({
+                type: GET_DATABASE,
+                payload: dataBase.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
 
 
+export function postRecipes(payload){
+    console.log(payload)
+    return async function(dispatch) {
+        try {
+            console.log(payload)
+            const response = await axios.post('http://localhost:3001/recipe', payload)
+            console.log(response)
+            return response
+
+        }catch(error){
+            console.log(error);
+        }
+    }
+}
 
 
-
-// export function postRecipes(payload){
-//     console.log(payload)
-//     return async function(dispatch) {
-//         try {
-//             console.log(payload)
-//             const response = await axios.post('/recipe', payload)
-//             console.log(response)
-//             return response
-
-//         }catch(error){
-//             console.log(error);
-//         }
-//     }
-// }
+export function searchId(payload) {
+    return {
+        type: GET_STATE_ID,
+        payload: payload
+    }
+}

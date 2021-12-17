@@ -99,6 +99,35 @@ export const TextDietsSVG = styled(TextDiets)`
 `;
 
 
+
+
+export const ContainerCards  = styled.div`
+  width: 1100px;
+  height: 1500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  top:200px;
+  left: 5%;
+  align-content: center;
+  gap:15px;
+  background: #DCDCDC;
+  border-radius: 10px;
+
+`;  
+
+export const ContainerPagination  = styled.div`
+
+  position: absolute;
+  top:1720px;
+  left: 25%;
+  border-radius: 5px;
+
+`;  
+
+
 // export function CreateRecipe() {
    
 //      return (
