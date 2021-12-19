@@ -12,8 +12,9 @@ import  { HomeContainer,
   ContainerCards,
   ContainerPagination,
  }from './HomeStyled'
-import SearchBar from './SearchBar'
+import SearchBar from '../SearchBar'
 import Pagination from '../pagination'
+import LoaderFood from '../Loader';
 //#
 
 function Home() {
@@ -78,7 +79,7 @@ function Home() {
                         )
                     })}
                     </ContainerCards>
-                    : <h1>ERROR</h1>}
+                    : <LoaderFood/>}
                 </div>
                 
                 <ContainerPagination>

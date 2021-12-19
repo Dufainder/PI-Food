@@ -1,4 +1,6 @@
-import {GET_RECIPES, GET_TYPES, POST_RECIPES, GET_RECIPES_ID, GET_STATE_ID} from '../components/actions/TypesActions.js'
+import {GET_RECIPES, GET_TYPES, POST_RECIPES, GET_RECIPES_ID, GET_STATE_ID,
+    GET_RECIPES_NAME,  FILTER_BY_SEARCHBAR,
+} from '../components/actions/TypesActions.js'
 
 
 const inicialState ={
@@ -52,7 +54,35 @@ export const rootReducer = (state = inicialState, action) => {
                             return{
                                 ...state,
                                 detail: Idfind
-                            }       
+                            }
+                            
+                            
+         case GET_RECIPES_NAME:
+                        const addRecipe = state.recipesAll
+                        const nameRecipes = addRecipe.map(recipe => recipe.name)
+                        const newRecipeAdd = action.payload?.map(recipe => { 
+                                if (!nameRecipes.includes(recipe.name)){
+                                      addRecipe.push(recipe) 
+                                      console.log(addRecipe) 
+                                    } 
+                                  })
+                        return {
+                                    ...state,
+                                    recipes: action.payload,
+                                    recipesAll: addRecipe
+                                } 
+
+
+                case FILTER_BY_SEARCHBAR:
+                            const filtSearch = state.recipesAll
+                            const filtOnState = filtSearch.filter((recipe) => {
+                            let name = recipe.name.toLowerCase() 
+                                if (name.includes(action.payload)) return recipe
+                                    })
+                             return{
+                                 ...state,
+                                 recipes: filtOnState   
+                                    }                
 
             default: return state
         }

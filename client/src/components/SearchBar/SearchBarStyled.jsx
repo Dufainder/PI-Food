@@ -1,5 +1,5 @@
 import styled, {keyframes} from 'styled-components';
-import { ReactComponent as SearchSVG } from '../svg/SearchSVG.svg';
+import { ReactComponent as SearchSVG } from './SearchSVG.svg';
 
 
 
