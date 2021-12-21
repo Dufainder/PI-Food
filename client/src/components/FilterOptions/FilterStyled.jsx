@@ -3,14 +3,14 @@ import styled from "styled-components";
                                                                               
 export const OptionsContainer = styled.div`
 
-  left: 0.5rem;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-  bottom: 1rem;
-  background-color: rgba(223, 220, 57, 0.6);
-  width: 300px;
-  height: 680px;
-  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  position: absolute;
+  left:84%;
+  top: 200px;
+  bottom: 10 px;
+  background-color: transparent;
+  width: 210px;
+  height: 400px;
+ 
 
 `;   
 
@@ -19,13 +19,13 @@ export const SelectContainer = styled.div`
   position: relative;
   display: flex;
   margin-top: 0.5rem;
-  width: 15em;
+  width: 200px;
   height: 3em;
   line-height: 3;
-  background: #09cee0;
+  background: black;
   overflow: hidden;
-  border-radius: 0.25em;
-
+  border-radius: 20px;
+  
 `;   
 
 export const Select = styled.select`
@@ -37,14 +37,17 @@ export const Select = styled.select`
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #09cee0;
+  background: black;
   background-image: none;
   flex: 1;
   padding: 0 0.5em;
   color: #fff;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 19px;
   font-family: "Open Sans", sans-serif;
-  background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+  background-image: linear-gradient(to right, silver 0%, gray 100%);
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 
 `;   

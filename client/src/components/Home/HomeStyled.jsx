@@ -109,11 +109,11 @@ export const ContainerCards  = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top:200px;
-  left: 5%;
+  top:180px;
+  left: 2%;
   align-content: center;
   gap:15px;
-  background: #DCDCDC;
+  background: transparent;
   border-radius: 10px;
 
 `;  
