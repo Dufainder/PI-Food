@@ -2,10 +2,6 @@ import styled, {keyframes} from 'styled-components';
 import { ReactComponent as SearchSVG } from './SearchSVG.svg';
 
 
-
-
-
-
 const moveSVG = keyframes`
  
  0%{
@@ -32,12 +28,6 @@ const moveSVG = keyframes`
    
 
 `;
-
-
-
-
-
-
 
 export const ButtonSVG = styled(SearchSVG)`
   width: 130px;

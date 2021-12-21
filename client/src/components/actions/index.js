@@ -1,6 +1,9 @@
 import axios from 'axios';
-import {GET_RECIPES, GET_RECIPES_ID,  GET_TYPES, GET_DATABASE, GET_STATE_ID,
-    GET_RECIPES_NAME, FILTER_BY_SEARCHBAR,
+import {GET_RECIPES, GET_RECIPES_ID,  
+    GET_TYPES, GET_DATABASE, 
+    GET_STATE_ID, GET_RECIPES_NAME, 
+    FILTER_BY_SEARCHBAR, FILTER_BY_ORDER, 
+    ORDER_BY_SCORE, FILTER_BY_DIETS
 } from './TypesActions.js'
 
 
@@ -107,5 +110,27 @@ export function getRecipesName(name) {
         } catch (error) {
             console.log(error);
         }
+    }
+}
+
+
+export function getFilterByDiets(payload){
+    return {
+        type: FILTER_BY_DIETS,
+        payload: payload
+    }
+}
+
+export function filterByOrder(payload){
+    return {
+        type: FILTER_BY_ORDER,
+        payload: payload
+    }
+}
+
+export function orderByScore(payload){
+    return{
+        type: ORDER_BY_SCORE,
+        payload: payload
     }
 }

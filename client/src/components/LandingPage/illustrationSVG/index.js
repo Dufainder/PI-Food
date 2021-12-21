@@ -1,5 +1,5 @@
 import React from 'react';
-import { FootFoodSVG, SvgPrinContainer,ContSVG } from './IllustrationSvgStyled';
+import { SvgPrinContainer,ContSVG } from './IllustrationSvgStyled';
 import ButtonLanding from '../buttonLading/index';
 import { Link } from 'react-router-dom';
 function IlustracionSVG() {
@@ -10,7 +10,6 @@ function IlustracionSVG() {
         <Link to='home'>
            <ButtonLanding/>
         </Link>
-         <FootFoodSVG/>
        {/* <SvgPrincipal/>
        <SVG4/>
        <SVG3/>

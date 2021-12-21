@@ -15,9 +15,13 @@ import  { HomeContainer,
 import SearchBar from '../SearchBar'
 import Pagination from '../pagination'
 import LoaderFood from '../Loader';
+import FilterOptions from '../FilterOptions';
 //#
 
+
 function Home() {
+
+
     const dispatch = useDispatch();
     const recipesAll = useSelector((state) => state.recipes)
     const second = useSelector((state) => state.recipesAll)
@@ -67,6 +71,8 @@ function Home() {
                   <TextDietsSVG/>
                 </ContenedorDiets>
               </Link>
+
+              <FilterOptions typesAll={typesAll}  setOrder={setOrder} setCurrentPage={setCurrentPage} />
              
               <div className = 'pag-body'>
                     {recipesAll.length > 0 ?

@@ -1,5 +1,8 @@
-import {GET_RECIPES, GET_TYPES, POST_RECIPES, GET_RECIPES_ID, GET_STATE_ID,
-    GET_RECIPES_NAME,  FILTER_BY_SEARCHBAR,
+import {GET_RECIPES, GET_TYPES, 
+    POST_RECIPES, GET_RECIPES_ID, 
+    GET_STATE_ID, GET_RECIPES_NAME,  
+    FILTER_BY_SEARCHBAR, FILTER_BY_DIETS, 
+    FILTER_BY_ORDER, ORDER_BY_SCORE
 } from '../components/actions/TypesActions.js'
 
 
@@ -42,7 +45,7 @@ export const rootReducer = (state = inicialState, action) => {
                             detail: action.payload
                         }  
                         
-            case GET_STATE_ID:
+         case GET_STATE_ID:
                             const filtId = state.recipesAll
                             const Idfind = filtId.find((recipe) => {
                                 if(typeof action.payload === 'number'){
@@ -73,7 +76,7 @@ export const rootReducer = (state = inicialState, action) => {
                                 } 
 
 
-                case FILTER_BY_SEARCHBAR:
+        case FILTER_BY_SEARCHBAR:
                             const filtSearch = state.recipesAll
                             const filtOnState = filtSearch.filter((recipe) => {
                             let name = recipe.name.toLowerCase() 
@@ -82,7 +85,55 @@ export const rootReducer = (state = inicialState, action) => {
                              return{
                                  ...state,
                                  recipes: filtOnState   
-                                    }                
+                                }
+                                
+            case ORDER_BY_SCORE:
+
+                    const recypesByScore = action.payload === 'SSc' ? state.recipesAll.sort((a, b) => {
+                                   
+                    if ((a.score - b.score) < 0) return 1
+                        else return -1
+                       }) : state.recipesAll.sort((a, b) => {
+                                        
+                                        if ((a.healthScore - b.healthScore) < 0) return 1
+                                        else return -1
+                                    })
+                                    return{
+                                        ...state,
+                                        recipes: recypesByScore
+                                    } 
+
+         case FILTER_BY_ORDER:
+                    const recypesByOrder = action.payload === 'up' ? state.recipesAll.sort((a, b) => {
+                             if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+                             else return -1
+                                }): state.recipesAll.sort((a, b) => {
+                                       if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
+                                       else return -1
+                                        })
+                     return{
+                       ...state,
+                      recipes: recypesByOrder
+                    }       
+                    
+             
+        case FILTER_BY_DIETS:
+            const recipes_All = state.recipesAll
+
+            const filtByDiets = action.payload === 'Filter by type' ? 
+            state.recipesAll : recipes_All.filter(recipe => {
+                if (recipe.diets.length > 0) {
+                    if(recipe.diets.find(element => element === action.payload)) return recipe
+                }
+                
+                if ((action.payload === 'vegetarian') && (recipe.hasOwnProperty('vegetarian')) && (recipe.vegetarian === true)) return recipe
+                
+                if ((action.payload === 'dairyFree') && (recipe.hasOwnProperty('dairyFree')) && (recipe.dairyFree === true)) return recipe
+                })
+            return{
+                ...state,
+                recipes: filtByDiets
+            }       
 
             default: return state
         }

@@ -1,11 +1,12 @@
 import React from 'react';
-import {ButtonContainer, Button} from './ButtonStyled';
+import {ButtonContainer, ButtonHome, SplashSVG} from './ButtonStyled';
 
 function ButtonLanding() {
     return (     
         
     <ButtonContainer>
-        <Button>Home</Button>
+        <ButtonHome/>
+        <SplashSVG/>
     </ButtonContainer>
 
  );} 
