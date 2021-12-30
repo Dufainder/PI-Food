@@ -47,6 +47,7 @@ export const CardContainer  = styled.div`
 export const ImageContainer  = styled.div`
   /* width: 50%;
   height: 315px; */
+  filter: saturate(180%);
 `;
 
 export const Image  = styled.img`
@@ -68,7 +69,7 @@ export const DietsContainer  = styled.div`
   background-color: rgba(185, 218, 245, 0.8);
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
-  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background-image: linear-gradient(-225deg, snow 0%, silver 100%);
 `;
 
 export const DishContainer  = styled(DietsContainer)`
@@ -119,7 +120,7 @@ justify-content: baseline;
 border-radius: 20px;
 margin-bottom: 1em;
 box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.4);
-background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+background-image: linear-gradient(-225deg, silver 0%, snow 100%);
 
 `;
 
@@ -129,14 +130,28 @@ export const StepsContainer  = styled(SummaryContainer)`
 
 export const H3Tittle  = styled.h3`
   
-  font-size: 30px; 
-  text-align:center;
-  color:black;
-  padding :0;
-  margin-top:5px;
+font-family: 'Pacifico', cursive;
+font-family: 'Shalimar', cursive;
+font-size: 70px; 
+text-align:center;
+color:black;
+padding :0;
+margin:5px 0px 10px 10px;
 `;
+
+export const H3Score  = styled(H3Tittle)`
+  
+font-size: 35px; 
+color:black;
+
+`;
+
+
 export const PInfo  = styled.p`
-  font-size: 20px; 
-  padding :0;
-  margin:10px 10px;
+  
+
+font-size: 20px; 
+padding :0;
+margin:5px 10px 20px 20px;
+  
 `;

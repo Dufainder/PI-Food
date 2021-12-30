@@ -28,8 +28,8 @@ router.post('/', async (req, res) => {
             where: {name: diets}
         })
 
-        if (!name) return res.status(400).send({error: 'Debe ingresar un nombre para el plato'});
-        if (!summary) return res.status(400).send({error: 'Debe ingresar un resumen del plato'});
+        if (!name) return res.status(400).send({error: 'Debe ingresar el name para la receta'});
+        if (!summary) return res.status(400).send({error: 'Debe ingresar un summary del receta'});
         
         recipeCreate.addDiet(dietDB)
         res.send('Succesfull')

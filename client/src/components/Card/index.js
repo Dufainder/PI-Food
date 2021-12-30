@@ -46,7 +46,7 @@ async function handleId(id){
     return (
         <CardContainer>
 
-               <ImageContainer>
+               <ImageContainer onClick={() => handleId(id)}>
                    <Image src={image} alt= 'image not Found'/>
                </ImageContainer>
 
@@ -68,9 +68,9 @@ async function handleId(id){
         </FootInformacion>
 
 
-                <ButtonContainer>
-                    <ButtonDetail onClick={() => handleId(id)}>Details</ButtonDetail>
-                </ButtonContainer>
+                 {/* <ButtonContainer>
+                     <ButtonDetail onClick={() => handleId(id)}>Details</ButtonDetail>
+                 </ButtonContainer> */}
 
         </CardContainer>
     )

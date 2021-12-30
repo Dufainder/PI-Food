@@ -13,6 +13,9 @@ export const CardContainer = styled.div`
   margin-left: 0.5rem;
   margin-bottom: 0.5rem;
   background-image: linear-gradient(60deg, #808080 0%,#808080 100%); 
+  &:hover{
+    box-shadow: 0 0 10px snow, 0 0 30px silver, 0 0 60px white;
+  }
 `;//                                                                                         #endregion
 
 //                                                                               #region[rgba(200, 156, 245, 0.15)]
@@ -58,6 +61,8 @@ export const P = styled.p`
 
 //#darkmagenta
 export const ImageContainer = styled.div`
+
+cursor:pointer;
 
  &:hover{
      border-radius: 20%;

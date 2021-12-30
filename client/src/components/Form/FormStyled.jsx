@@ -38,10 +38,10 @@ export const InputName = styled.input`
 
 export const InputSummary = styled.textarea`
    width: 500px;
-   height: 95px;
+   height: 70px;
    position:absolute;
    background: transparent; 
-   top: 305px;
+   top: 340px;
    left: 42%;
    font-size: 20px;
 
@@ -96,7 +96,7 @@ export const SelectDiets = styled.select`
    background: transparent; 
    color:snow;
    top: 550px;
-   left: 20%;
+   left: 21%;
    font-size: 20px;
    &:focus{
      color:black;

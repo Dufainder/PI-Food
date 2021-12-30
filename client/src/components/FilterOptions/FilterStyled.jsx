@@ -22,9 +22,9 @@ export const SelectContainer = styled.div`
   width: 200px;
   height: 3em;
   line-height: 3;
-  background: black;
   overflow: hidden;
   border-radius: 20px;
+ 
   
 `;   
 
@@ -37,11 +37,10 @@ export const Select = styled.select`
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: black;
   background-image: none;
   flex: 1;
   padding: 0 0.5em;
-  color: #fff;
+  color:#fff;
   cursor: pointer;
   font-size: 19px;
   font-family: "Open Sans", sans-serif;
@@ -49,5 +48,14 @@ export const Select = styled.select`
   justify-content: center;
   align-content: center;
   text-align: center;
+
+  &:hover{
+    background:snow;
+    color:black;
+  }
+
+  &:active{
+    color: black;
+  }
 
 `;   

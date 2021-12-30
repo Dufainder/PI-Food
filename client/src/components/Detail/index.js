@@ -17,7 +17,8 @@ import { CardContainer,
      Image,
      P,
      H3Tittle,
-     PInfo
+     PInfo,
+     H3Score
      } from './DetailStyled.jsx';
 
 
@@ -63,12 +64,12 @@ function Detail(props) {
                 </ImageContainer>
 
                 <DietsContainer>
-                    <h4>Diets Types</h4>
+                    <H3Score>Diets Types</H3Score>
                     {detail.diets?.map((diet, index) => <P key={index} >{diet}</P>)}
                 </DietsContainer>
 
                 <DishContainer>
-                    <h4 >Dish Types</h4>
+                    <H3Score>Dish Types</H3Score>
                     {detail.types?.map((dish, index)=> <P key={index} >{dish.name ? dish.name : dish}</P>)}
                 </DishContainer>
 
@@ -77,11 +78,11 @@ function Detail(props) {
             <ScoresContainer>
 
                 <Score>
-                    <h3 className = 'h3score'>Score: {detail.score}</h3>
+                    <H3Score>Score: {detail.score}</H3Score>
                 </Score>
 
                 <Score>
-                    <h3 className = 'h3score'>Health-Score: {detail.healthScore}</h3>
+                    <H3Score>Health-Score: {detail.healthScore}</H3Score>
                 </Score>
 
             </ScoresContainer>
