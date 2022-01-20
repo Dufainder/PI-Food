@@ -1,6 +1,6 @@
 
 
-# Individual Project - Henry Food
+# Individual Project (Henry) - Api-Food
 
 <p align="right">
     <video src="./video.mp4" width="300" height="250"/>
