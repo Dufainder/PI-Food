@@ -3,6 +3,7 @@
 # Individual Project - Henry Food
 
 <p align="right">
+  <video src="./video.mp4" width="300" height="250"/>
   <img height="200" src="./cooking.png" />
 </p>
 
@@ -28,6 +29,7 @@ La api cuenta cuenta con modelos de tablas de bases de datos para crear recetas 
 #### Tecnologías Utilizadas:
 - [ ] React
 - [ ] Styled-components
+- [ ] NodeJS
 - [ ] Axios
 - [ ] Redux
 - [ ] Express
