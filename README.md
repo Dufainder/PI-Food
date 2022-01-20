@@ -1,10 +1,9 @@
 
 
 # Individual Project (Henry) - Api-Food
+Dar click sobre la imagen para ver el video. Que muestra este proyecto funcionando.
 
-<p align="right">
-    <video src="./video.mp4" width="300" height="250"/>
-</p>
+[![Alt text](https://img.youtube.com/vi/YX4xTVlzZJc/0.jpg)](https://www.youtube.com/watch?v=YX4xTVlzZJc)
 
 ## Objetivos Realizados en este Proyecto
 
