@@ -1,6 +1,4 @@
-import styled, {keyframes} from 'styled-components'
-
-import { ReactComponent as FootSVG } from '../svg/FootFood.svg';
+import styled from 'styled-components'
 import { ReactComponent as ContenedorSVG } from '../svg/MassageSVG.svg';
 
 

@@ -51,7 +51,7 @@ export const ImageContainer  = styled.div`
 `;
 
 export const Image  = styled.img`
-   width: 100%;
+   width: 350px;
    border-radius:20px;
   
 `;
@@ -88,6 +88,7 @@ export const ScoresContainer  = styled.div`
   display: flex;
   width: 50%;
   margin-left:400px;
+  margin-top: 10px;
   justify-content: space-around;
 
 
@@ -116,7 +117,7 @@ export const SummaryContainer  = styled.div`
 width: 45%;
 background-color: rgba(185, 218, 245, 0.8);
 margin-right: 1em;
-justify-content: baseline;
+//justify-content: baseline;
 border-radius: 20px;
 margin-bottom: 1em;
 box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.4);

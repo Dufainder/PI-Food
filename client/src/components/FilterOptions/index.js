@@ -1,6 +1,6 @@
 import{getFilterByDiets,filterByOrder, orderByScore} from "../actions"
 import React from 'react'
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { SelectContainer, Select, OptionsContainer } from './FilterStyled'
 
 export default function FilterOptions({typesAll,setCurrentPage, setOrder}) {

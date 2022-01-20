@@ -7,6 +7,7 @@ const { Recipe, conn } = require('../../src/db.js');
 const agent = session(app);
 const recipe = {
   name: 'Milanea a la napolitana',
+  summary: 'milanesas de carne con salsa de tomates'
 };
 
 describe('Recipe routes', () => {
@@ -18,7 +19,12 @@ describe('Recipe routes', () => {
     .then(() => Recipe.create(recipe)));
   describe('GET /recipes', () => {
     it('should get 200', () =>
-      agent.get('/recipes').expect(200)
+      agent.get('/recipes?name=arroz').expect(200)
     );
   });
+  describe('GET /recipes', () => {
+    it('should get 200', () =>
+    agent.get('/recipes/1000').expect(200))
+  })
+
 });

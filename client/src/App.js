@@ -12,12 +12,11 @@ function App() {
     <BrowserRouter>
     <GlobalStyle/>
       <Routes>
-        <Route exact path="/" element={<LandingPage/>}/>
+        <Route path="/" element={<LandingPage/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/create" element={<Form/>}/>
         <Route path="/detail" element={<Detail/>}/>
       </Routes>
-
     </BrowserRouter>
 
   );

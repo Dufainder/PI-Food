@@ -77,6 +77,7 @@ cursor:pointer;
 //#orange
  export const Image = styled.img`
  width : 320px; 
+ height: 230px;
  border-radius: 15px;
 `;//#
 

@@ -9,8 +9,6 @@ import {
      DietsContainer, 
      H4,
      TypesContainer,
-     ButtonContainer,
-     ButtonDetail,
      P,
     }
 from './CardStyled';//#
@@ -67,12 +65,7 @@ async function handleId(id){
                 </TypesContainer>
         </FootInformacion>
 
-
-                 {/* <ButtonContainer>
-                     <ButtonDetail onClick={() => handleId(id)}>Details</ButtonDetail>
-                 </ButtonContainer> */}
-
-        </CardContainer>
+  </CardContainer>
     )
 }//#
 

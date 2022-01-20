@@ -6,6 +6,7 @@ const { Recipe, Diet, Op } = require('../db');
 const {YOUR_API_KEY, spoonacularURL} = process.env;
 
 //!                   1
+
 const getApiInfo = async () => {
     try
     {
@@ -35,15 +36,18 @@ const getApiInfo = async () => {
 
         return response;
     } 
-    }catch (e) {
+
+    }catch (error) {
+        console.error(error);
         return ([])
     }
 }
 
 //!                   2
-const getDBInfo = () => {
+
+const getDBInfo = async () => {
         try{
-            const dataDB = Recipe.findAll({ 
+            const dataDB =  await Recipe.findAll({ 
                 include:{
                     model: Diet,
                     attributes: ['name'],
@@ -51,64 +55,86 @@ const getDBInfo = () => {
                         attributes: []
                     }
                 }
-            }).then(r => r ).then(data => 
-            data?.map(recipe => {
-                return {
-                    id: recipe.id,
-                    name: recipe.name,
-                    summary: recipe.summary,
-                    score: recipe.score,
-                    healthScore: recipe.healthScore,
-                    image: recipe.image,
-                    steps: recipe.steps,
-                    diets: recipe.diets?.map(diet => diet.name),
-                }
             })
-            )
-            return dataDB
-        }catch(err) {
-            return ('error')
+            let response = await dataDB?.map(recipe => {
+                     return {
+                         id: recipe.id,
+                         name: recipe.name,
+                         summary: recipe.summary,
+                         score: recipe.score,
+                         healthScore: recipe.healthScore,
+                         image: recipe.image,
+                         steps: recipe.steps,
+                         diets: recipe.diets?.map(diet => diet.name),
+                     }
+                 });
+            return response;
+        }catch (error) {
+          console.error(error);
         }
     }
 
 //!                   3
+
     const getAllInfo = async () => {
             try{
-                const apiInfo = await getApiInfo()
-                const bdInfo = await getDBInfo()
-                const infoTotal = apiInfo.concat(bdInfo)
-                return infoTotal
-            }catch(err) {
-                return ('error')
+                const apiInfo = await getApiInfo();
+                const bdInfo = await getDBInfo();
+                const infoTotal = apiInfo.concat(bdInfo);
+                return infoTotal;
+            }catch (error) {
+                console.error(error);
             }
          }
 
 //!                   4
+
+
+// const getDyte= async(diet)=>{
+
+//     try{
+//         const DBInfo = await getDBInfo();
+//         const filtByName = DBInfo.filter(recipe => recipe.diets.includes(name));
+               
+//                 return filtByName;
+//     }
+// }
+
+
+
 const getApiByName = async (name) => {
            
             try{
                 const resAxios = await axios.get(`${spoonacularURL}/recipes/complexSearch?query=${name}&addRecipeInformation=true&number=100&apiKey=${YOUR_API_KEY}`);
                 const { results } = resAxios.data;
-            
-                let response = results?.map((result) => {
-                    return {
-                        name: result.title,
-                        vegetarian: result.vegetarian,
-                        vegan: result.vegan,
-                        glutenFree: result.glutenFree,
-                        dairyFree: result.dairyFree, 
-                        image: result.image, 
-                        idApi: result.id, 
-                        score: result.spoonacularScore,
-                        healthScore: result.healthScore,
-                        types: result.dishTypes?.map(element => element),  
-                        diets: result.diets?.map(element => element), 
-                        summary:result.summary, 
-                        steps: (result.analyzedInstructions[0] && result.analyzedInstructions[0].steps?result.analyzedInstructions[0].steps.map(item=>item.step).join(" \n"):'')
-                    }
-                })
-            return response
-            }catch(err) {
+                if(results.length > 0){
+                    let response = results?.map((result) => {
+                        return {
+                            name: result.title,
+                            vegetarian: result.vegetarian,
+                            vegan: result.vegan,
+                            glutenFree: result.glutenFree,
+                            dairyFree: result.dairyFree, 
+                            image: result.image, 
+                            idApi: result.id, 
+                            score: result.spoonacularScore,
+                            healthScore: result.healthScore,
+                            types: result.dishTypes?.map(element => element),  
+                            diets: result.diets?.map(element => element), 
+                            summary:result.summary, 
+                            steps: (result.analyzedInstructions[0] && result.analyzedInstructions[0].steps?result.analyzedInstructions[0].steps.map(item=>item.step).join(" \n"):'')
+                        }
+                    })
+              return response           
+            }
+
+            else{
+                console.log("NO hay coincidencia en la API");
+                //return ('error');
+            }
+
+            }catch (error) {
+                console.error(error);
                 return ('error')
             }
         }
@@ -117,10 +143,11 @@ const getApiByName = async (name) => {
         const getDBByName = async (name) => {
             try{
                 const DBInfo = await getDBInfo();
-                const filtByName = DBInfo.filter(recipe => recipe.name.includes(name))
-                return filtByName
-            }catch(err){
-                return err
+                const filtByName = DBInfo.filter(recipe => recipe.name.includes(name));
+               
+                return filtByName;
+            }catch (error) {
+                return ('error')
             } 
         }
    //!                   6     
@@ -130,27 +157,30 @@ const getApiByName = async (name) => {
                 const DBByName = await getDBByName(name)
                 const infoTotal = apiByName.concat(DBByName)
                 return infoTotal
-            }catch(err) {
+            }catch (error) {
                 return ('error')
             }
         }     
 
-//^              1
+//^       
+       1
 router.get('/', async (req, res) => {
     
         const { name } = req.query
     
         if (name) {
       
-            const infoByName = await getInfoByName(name)
+            const infoByName = await getInfoByName(name);
             if (infoByName !== 'error'){
+                console.log("Se encontro coincidencia con name")
                 infoByName.length > 0 ? res.json(infoByName) : res.status(400).json([{ name: 'not found any recipes'}]);
             }else{
-                res.status(404).json([{ name: 'API Error'}])
+                console.log("Error")
+                res.status(404).json([{ name: 'Error'}])
             }
     
         }else{
-    
+           // para no confundir a home, si no hay un name de busqueda muestra toda la info.
             const allDate = await getAllInfo() 
             if (allDate !== 'error'){  
                 res.json(allDate);
@@ -160,34 +190,7 @@ router.get('/', async (req, res) => {
     
         }
     });
-//^              2
 
-    router.get('/dates', async (req, res) => {
-        const allDateBD = await getDBInfo()
-        if (allDateBD !== 'error') {
-            res.json(allDateBD)
-        } else {
-            res.status(404).json({message: 'error in database '})
-        }
-    })
-
-
-//^                3
-    router.put('/', async (req, res) => {
-        const {id, summary} = req.query
-        let resul
-        try{
-            resul = await Recipe.update(
-                {summary},
-                {where: {id: id}},
-            )
-      
-        }catch{
-            resul = null
-        }
-        if(resul === 1) res.status(200).send('success')
-        else res.status(404).send('reject')
-    })   
 
 
 //^              4
@@ -234,22 +237,23 @@ router.get('/', async (req, res) => {
             }else{
     
                 const resAxios = await axios.get(`${spoonacularURL}/recipes/${id}/information?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`);
-    
+                const {result} = resAxios.data;
                 let obj = {};
     
                 obj = {
-                    name: resAxios.data.title, 
-                    vegetarian: resAxios.data.vegetarian,
-                    vegan: resAxios.data.vegan,
-                    glutenFree: resAxios.data.glutenFree,
-                    dairyFree: resAxios.data.dairyFree,
-                    image: resAxios.data.image, 
-                    idApi: resAxios.data.id, 
-                    score: resAxios.data.spoonacularScore, 
-                    healthScore: resAxios.data.healthScore, 
-                    diets: resAxios.data.diets?.map(element => element),types: resAxios.data.dishTypes?.map(element => element), 
-                    summary:resAxios.data.summary, 
-                    steps: resAxios.data.instructions}
+                    name: result.title, 
+                    vegetarian: result.vegetarian,
+                    vegan: result.vegan,
+                    glutenFree: result.glutenFree,
+                    dairyFree: result.dairyFree,
+                    image: result.image, 
+                    idApi: result.id, 
+                    score: result.spoonacularScore, 
+                    healthScore: result.healthScore, 
+                    diets: result.diets?.map(element => element),types: result.dishTypes?.map(element => element), 
+                    summary:result.summary, 
+                    steps: result.instructions
+                   }
                 
                 if (obj){
                     res.json(obj);

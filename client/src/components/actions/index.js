@@ -1,6 +1,5 @@
 import axios from 'axios';
-import {GET_RECIPES, GET_RECIPES_ID,  
-    GET_TYPES, GET_DATABASE, 
+import {GET_RECIPES, GET_TYPES, GET_DATABASE, 
     GET_STATE_ID, GET_RECIPES_NAME, 
     FILTER_BY_SEARCHBAR, FILTER_BY_ORDER, 
     ORDER_BY_SCORE, FILTER_BY_DIETS
@@ -32,21 +31,6 @@ export function getTypes() {
                 payload: types.data
                 })
             )
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
-
-
-export function getRecipesId(id) {
-    return async function (dispatch) {
-        try {
-            let detail = await axios.get(`http://localhost:3001/recipes/${id}`)
-            return dispatch({
-                type: GET_RECIPES_ID,
-                payload: detail.data
-            })
         } catch (error) {
             console.log(error);
         }

@@ -5,10 +5,10 @@ const { Diet } = require('../db');
 router.get('/', async (req, res) => {
     try{
         let typesDiet = await Diet.findAll();
-
+        // console.log(typesDiet);
         res.status(200).json(typesDiet);
     } catch (error){
-        console.log(error);
+        res.status(400).send(error);
     }
 })
 

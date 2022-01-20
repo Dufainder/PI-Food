@@ -30,12 +30,14 @@ router.post('/', async (req, res) => {
 
         if (!name) return res.status(400).send({error: 'Debe ingresar el name para la receta'});
         if (!summary) return res.status(400).send({error: 'Debe ingresar un summary del receta'});
+        // console.log(recipeCreate);
+        // console.log(dietDB);
         
-        recipeCreate.addDiet(dietDB)
-        res.send('Succesfull')
+        recipeCreate.addDiet(dietDB);
+        res.send('Succesfull');
 
     }catch(error){
-        res.status(400).json({message: error?.message | 'Error en carga de datos'})
+        res.status(400).send(error);
     }
 })
 

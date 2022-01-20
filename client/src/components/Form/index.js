@@ -16,7 +16,7 @@ import  {
 
 import React from 'react';
 import { useNavigate }  from 'react-router-dom'
-import { getTypes, postRecipes, getDatabase } from '../actions/index.js';
+import { getTypes, postRecipes} from '../actions/index.js';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 
@@ -31,11 +31,11 @@ function validate(input){
     if(!input.name) {
         errors.name = 'Name is require'
     }
+    if(!input.summary) {
+        errors.summary = 'Summary is require'
+    }
     return errors
 }
-
-
-
 
 
 function Form() {
@@ -53,7 +53,7 @@ function Form() {
         summary: '',
         score: 0, 
         healthScore: 0,
-        image: 'https://vegano.club/wp-content/uploads/2019/11/comidas-veganas.jpg',
+        image: 'https://st.depositphotos.com/1987177/3470/v/600/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg',
         steps: '',
         diets: []
     })
@@ -64,18 +64,7 @@ function Form() {
  
     async function handleSubmit(evt){
         evt.preventDefault()
-        await dispatch(postRecipes(input))
-        setInput({
-            name: '',
-            summary: '',
-            score: 0, 
-            healthScore: 0,
-            image: 'https://vegano.club/wp-content/uploads/2019/11/comidas-veganas.jpg',
-            steps: '',
-            diets: []
-        })
-        const result = await dispatch(getDatabase())
-        console.log(result)
+        dispatch(postRecipes(input))
         history('/home')
     }
    
@@ -106,7 +95,7 @@ function Form() {
                 [evt.target.name]: 'Recipe is found'
             })
         }
-        // console.log(input)
+        console.log(input)
     }
 
 
@@ -121,7 +110,7 @@ function Form() {
                 })
             }
         }catch{
-            console.log('error de parseo')
+            console.log('error')
         }
         // console.log(input)
     }
@@ -145,6 +134,7 @@ function Form() {
 
                        <InputName 
                         type="text"
+                        autoComplete="off"
                         value = {input.name}
                         name = 'name' 
                         placeholder='Agregar Nombre...'

@@ -1,10 +1,10 @@
 //#cyan
 import Card  from '../Card';
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 import { getRecipesAll,getTypes} from '../actions/index'
-import  { HomeContainer, 
+import  {  
   CreateRecipeSVG, 
   LogoSVG, LogoDietsSVG, 
   TextDietsSVG, 
@@ -16,20 +16,22 @@ import SearchBar from '../SearchBar'
 import Pagination from '../pagination'
 import LoaderFood from '../Loader';
 import FilterOptions from '../FilterOptions';
+import{PagedButton} from '../pagination/PaginationStyled'
 //#
 
 
 function Home() {
+  //const second = useSelector((state) => state.recipesAll)
 
 
-    const dispatch = useDispatch();
-    const recipesAll = useSelector((state) => state.recipes)
-    const second = useSelector((state) => state.recipesAll)
-    const typesAll = useSelector(state => state.types)
+  const dispatch = useDispatch();
+  const recipesAll = useSelector((state) => state.recipes)
+  const typesAll = useSelector(state => state.types)
   
   const [order, setOrder] = useState('')
   const [currenPage, setCurrentPage] = useState(1)
-  const [recipesPage, setRecipesPage] = useState(9) 
+  const recipesPage = 9; 
+
   const indexLastRecipe = currenPage * recipesPage
   const indexFirstRecipe = indexLastRecipe - recipesPage
   const currentRecipes = recipesAll.length ? recipesAll.slice(indexFirstRecipe, indexLastRecipe) : []
@@ -43,16 +45,10 @@ function Home() {
     dispatch(getTypes())
   }, [])
 
-
-
-  console.log(recipesAll, 'error')   
-  
-  
+    
   const Page = (pageNumber) => {
       setCurrentPage(pageNumber)
   }
-
-  
 
    
     return (
@@ -76,7 +72,8 @@ function Home() {
              
               <div className = 'pag-body'>
                     {recipesAll.length > 0 ?
-                    <ContainerCards  className='body'>
+                    <ContainerCards>
+
                     {currentRecipes?.map((recipe, index) => {
                     return(    
                         <div key={index}> 
@@ -94,6 +91,8 @@ function Home() {
                         recipesAll = {recipesAll.length}
                         Page = {Page}
                     />
+
+                
                 </ContainerPagination>
 
 

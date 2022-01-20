@@ -1,6 +1,5 @@
 import {GET_RECIPES, GET_TYPES, 
-    POST_RECIPES, GET_RECIPES_ID, 
-    GET_STATE_ID, GET_RECIPES_NAME,  
+    POST_RECIPES, GET_STATE_ID, GET_RECIPES_NAME,  
     FILTER_BY_SEARCHBAR, FILTER_BY_DIETS, 
     FILTER_BY_ORDER, ORDER_BY_SCORE
 } from '../components/actions/TypesActions.js'
@@ -15,8 +14,7 @@ const inicialState ={
 }
 
 export const rootReducer = (state = inicialState, action) => {
-    console.log('entro');
-    console.log(action.type);
+    
     switch (action.type) {
          
         case GET_RECIPES: 
@@ -38,12 +36,6 @@ export const rootReducer = (state = inicialState, action) => {
                         ...state,
                     }
 
-            case GET_RECIPES_ID:
-                        console.log(action.payload)
-                        return {
-                            ...state,
-                            detail: action.payload
-                        }  
                         
          case GET_STATE_ID:
                             const filtId = state.recipesAll
@@ -62,14 +54,7 @@ export const rootReducer = (state = inicialState, action) => {
                             
          case GET_RECIPES_NAME:
                         const addRecipe = state.recipesAll
-                        const nameRecipes = addRecipe.map(recipe => recipe.name)
-                        const newRecipeAdd = action.payload?.map(recipe => { 
-                                if (!nameRecipes.includes(recipe.name)){
-                                      addRecipe.push(recipe) 
-                                      console.log(addRecipe) 
-                                    } 
-                                  })
-                        return {
+                          return {
                                     ...state,
                                     recipes: action.payload,
                                     recipesAll: addRecipe
@@ -79,9 +64,11 @@ export const rootReducer = (state = inicialState, action) => {
         case FILTER_BY_SEARCHBAR:
                             const filtSearch = state.recipesAll
                             const filtOnState = filtSearch.filter((recipe) => {
-                            let name = recipe.name.toLowerCase() 
-                                if (name.includes(action.payload)) return recipe
-                                    })
+                            let name = recipe.name.toLowerCase();
+                            if (name.includes(action.payload)) return recipe;
+                          
+                            })
+                             //console.log(filtOnState)       
                              return{
                                  ...state,
                                  recipes: filtOnState   
@@ -118,10 +105,12 @@ export const rootReducer = (state = inicialState, action) => {
                     
              
         case FILTER_BY_DIETS:
+
             const recipes_All = state.recipesAll
 
             const filtByDiets = action.payload === 'Filter by type' ? 
             state.recipesAll : recipes_All.filter(recipe => {
+                console.log(recipe.diets.length)
                 if (recipe.diets.length > 0) {
                     if(recipe.diets.find(element => element === action.payload)) return recipe
                 }

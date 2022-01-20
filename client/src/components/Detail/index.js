@@ -1,7 +1,7 @@
+//import { useState} from 'react';
+//import { getRecipesId } from '../actions/index.js';
 import React from 'react';
-import { useState} from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import { getRecipesId } from '../actions/index.js';
+import {useSelector} from 'react-redux';
 import { CardContainer,
      Container,
      ImageContainer,
@@ -22,34 +22,11 @@ import { CardContainer,
      } from './DetailStyled.jsx';
 
 
-
-function validate(id) {
-
-    if((id.length <= 6)&&(id.length > 0)) {
-        for(let i = 0; i < id.length; i++) {
-            if(!Number.isInteger(id[i] * 1)) return false
-        }
-    }else if( id.length < 36){
-        return false
-    }
-    return true
-}
-
-
-function Detail(props) {
-    const dispatch = useDispatch()
-    const detail = useSelector((state) => state.detail) 
-    const [id, setId] = useState('');
-
-    function handleInput(evt){
-        evt.preventDefault();
-        setId(evt.target.value);    
-    }
+function Detail() {
     
-    function handleSubmit(evt){
-        evt.preventDefault();
-        if (validate(id)) dispatch(getRecipesId(id)) 
-    }
+    const detail = useSelector((state) => state.detail) 
+   
+
     
     return (
         <Container>

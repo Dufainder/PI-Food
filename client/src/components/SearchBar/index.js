@@ -1,10 +1,10 @@
-import {InputCity, InputButton, SearchContainer, ButtonSVG} from "./SearchBarStyled"
+import {InputCity, SearchContainer, ButtonSVG} from "./SearchBarStyled"
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { getRecipesName, searchBarName } from '../actions/index.js'
 
 export default function SearchBar() {
-   const recipesAll = useSelector((state) => state.recipes)
+   //const recipesAll = useSelector((state) => state.recipes)
    const dispatch = useDispatch();
    const [name, setName] = useState('');
 
@@ -18,18 +18,18 @@ export default function SearchBar() {
        evt.preventDefault();
        if(name){
            dispatch(getRecipesName(name));
-           setName('')
+           setName('')   // poner el estado en cero otra  vez
        }
    } 
     return( 
             <>
               <SearchContainer>
                  <InputCity type="text" 
-                 placeholder="Buscar Receta..." 
-                 onChange={evt => handleInput(evt)}/>
+                    placeholder="Search Recipe..." 
+                    onChange={evt => handleInput(evt)}
+                />
 
-                  {/* <InputButton type ="submit" onClick={ evt => handleSubmit(evt)}>Buscar</InputButton>  */}
-                  <ButtonSVG  type ="submit" onClick={ evt => handleSubmit(evt)}/> 
+                <ButtonSVG  type ="submit" onClick={ evt => handleSubmit(evt)}/> 
                
               </SearchContainer>
            </>
