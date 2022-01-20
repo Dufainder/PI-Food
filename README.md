@@ -3,7 +3,6 @@
 # Individual Project - Henry Food
 
 <p align="right">
-  <video src="./video.mp4" width="300" height="250"/>
   <img height="200" src="./cooking.png" />
 </p>
 
