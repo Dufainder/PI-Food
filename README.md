@@ -1,7 +1,7 @@
 
 
 # Individual Project (Henry) - Api-Food
-Dar click sobre la imagen para ver el video. Que muestra este proyecto funcionando.
+Dar click sobre la imagen para ver el video.
 
 [![Alt text](https://img.youtube.com/vi/YX4xTVlzZJc/0.jpg)](https://www.youtube.com/watch?v=YX4xTVlzZJc)
 
