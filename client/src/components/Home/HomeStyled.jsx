@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import React from 'react'
-import { Link } from 'react-router-dom';
 import { ReactComponent as LogSVG } from './svg/MassageSVG.svg';
 import { ReactComponent as CreateRecipe } from './svg/full.svg';
 import { ReactComponent as ContDiets } from './svg/LogoDiets.svg';
