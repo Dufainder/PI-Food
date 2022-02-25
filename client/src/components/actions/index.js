@@ -5,11 +5,12 @@ import {GET_RECIPES, GET_TYPES, GET_DATABASE,
     ORDER_BY_SCORE, FILTER_BY_DIETS
 } from './TypesActions.js'
 
+const {REACT_APP_SERVER} = process.env;
 
 
  export function getRecipesAll(){
     return function(dispatch){
-             axios.get('http://localhost:3001/recipes')
+             axios.get(`${REACT_APP_SERVER}/recipes`)
             .then((json) => {
             return dispatch({
                 type: GET_RECIPES,
@@ -24,7 +25,7 @@ import {GET_RECIPES, GET_TYPES, GET_DATABASE,
 export function getTypes() {
     return function (dispatch) {
         try {
-            axios.get(`http://localhost:3001/types`)
+            axios.get(`${REACT_APP_SERVER}/types`)
             .then(types => 
                  dispatch({
                 type: GET_TYPES,
@@ -41,7 +42,7 @@ export function getTypes() {
 export function getDatabase() {
     return async function (dispatch) {
         try {
-            let dataBase = await axios.get(`http://localhost:3001/recipes/dates`)
+            let dataBase = await axios.get(`${REACT_APP_SERVER}/recipes/dates`)
             return dispatch({
                 type: GET_DATABASE,
                 payload: dataBase.data
@@ -58,7 +59,7 @@ export function postRecipes(payload){
     return async function(dispatch) {
         try {
             console.log(payload)
-            const response = await axios.post('http://localhost:3001/recipe', payload)
+            const response = await axios.post(`${REACT_APP_SERVER}/recipe`, payload)
             console.log(response)
             return response
 
@@ -86,7 +87,7 @@ export function searchBarName(payload) {
 export function getRecipesName(name) {
     return async function (dispatch) {
         try {
-            const recipes = await axios.get(`http://localhost:3001/recipes?name=${name}`)
+            const recipes = await axios.get(`${REACT_APP_SERVER}/recipes?name=${name}`)
             return dispatch({
                 type: GET_RECIPES_NAME,
                 payload: recipes.data
