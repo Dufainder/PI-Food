@@ -16,7 +16,7 @@ import SearchBar from '../SearchBar'
 import Pagination from '../pagination'
 import LoaderFood from '../Loader';
 import FilterOptions from '../FilterOptions';
-import{PagedButton} from '../pagination/PaginationStyled'
+// import{PagedButton} from '../pagination/PaginationStyled'
 //#
 
 

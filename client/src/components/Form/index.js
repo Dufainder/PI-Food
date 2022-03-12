@@ -185,7 +185,7 @@ function Form() {
                     {((input.name !== '') && (!error.name) && (input.summary !=='')) ?
                          
                              <ButtonSubmit type='submit'>Recipes Create</ButtonSubmit>
-                              :  input.name ==''? <P_button>Name is require</P_button>
+                              :  input.name === ''? <P_button>Name is require</P_button>
                               :  <P_button>Summary is require</P_button>
                       }
                   </DivSubmitContainer> 
