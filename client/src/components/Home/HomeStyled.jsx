@@ -9,29 +9,24 @@ import { ReactComponent as TextDiets } from './svg/TextDiets.svg';
 
 export const HomeContainer  = styled.div`
 
-     position: absolute;
+     /* position: absolute;
      padding: 20px;
      top: 50px;
-     background-image: linear-gradient(to right, #54586896, #4f3d5070), url('../images/FondoBlack.jpg');
+     background-image: linear-gradient(to right, #54586896, #4f3d5070), url('../images/FondoBlack.jpg'); */
 
 `;
 
 export const LogoSVG = styled(LogSVG)`
   width: 130px;
   height: 100px;
-  display: flex;
-  position: absolute;
-  left:10px;
-  top: 0px;
 `;
 
 export const CreateRecipeSVG = styled(CreateRecipe)`
   width: 80px;
   height: 90px;
-  display: flex;
-  position: absolute;
-  left:850px;
-  top: 10px;
+  padding-right:10px;;
+ 
+  
   cursor:pointer;
   .texto{
               fill: snow;
@@ -100,7 +95,21 @@ export const TextDietsSVG = styled(TextDiets)`
 
 
 export const ContainerCards  = styled.div`
-  width: 1100px;
+ 
+display: flex;
+justify-content: center;
+height: 1200px;
+margin-left: 5%;
+margin-right: 5%; 
+margin-top: 3%;
+margin-bottom: 3%;
+border-radius: 20px;
+width: 75%;
+background: #0D0D0D;
+ 
+ 
+ 
+ /* width: 900px;
   height: 1500px;
   display: flex;
   justify-content: center;
@@ -111,15 +120,28 @@ export const ContainerCards  = styled.div`
   left: 2%;
   align-content: center;
   gap:15px;
-  background: transparent;
-  border-radius: 10px;
+  border-radius: 10px; */
 
 `;  
+
+
+export const MarginContenedor = styled.div`
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 2.5%;
+  gap: 2%;
+  background-color: transparent;
+  
+`;
+
 
 export const ContainerPagination  = styled.div`
 
   position: absolute;
-  top:1720px;
+  top:1370px;
   left: 25%;
   border-radius: 5px;
 

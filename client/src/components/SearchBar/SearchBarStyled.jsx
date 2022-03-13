@@ -32,10 +32,12 @@ const moveSVG = keyframes`
 export const ButtonSVG = styled(SearchSVG)`
   width: 130px;
   height: 80px;
-  display: flex;
-  position: absolute;
-  left:50%;
-  top: 5px;
+  margin: 0%;
+  padding: 0%;
+  /* display: flex; */
+  position: relative;
+  left:-50px;
+  /* top: 5px;  */
   cursor: pointer;
  
   
@@ -68,11 +70,12 @@ export const ButtonSVG = styled(SearchSVG)`
 //-------Contenedor del input y su button------
 
 export const SearchContainer = styled.div`
-   /* display: flex;
-   gap: 10px;  
-   width: 70%;
+
+   /* gap: 10px;   */
+   display: flex;
+   width: 100%;
    align-items: center; 
-   justify-content: center; */
+   justify-content: center;
 
 `;
 
@@ -84,22 +87,21 @@ export const InputCity = styled.input`
   /* align-items: center;
   justify-content: center; */
   /* text-align: center; */
-  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.5)inset, 0 0 8px #fff;
   /* position: sticky; */
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.5)inset, 0 0 8px black;
   height: 26px;
-  width: 190px;
-  border-radius: 5px 5px 5px 5px;
+  width: 20%;
+  border-radius: 7px;
   border-color: black;
   font-size: 12px;
+  margin: 0;
   padding: 5px;
-  position: absolute;
-  top:22px;
-  left: 40%;
   
-
+  
+  
   :focus{
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.5)inset, 0 0 8px #fff;
     border-color:black;
-    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.5)inset, 0 0 8px black;
     outline: 0 none; 
     font-size: 15px;
     padding: 5px;

@@ -2,14 +2,16 @@
 import {
      CardContainer,
      TittleContainer, 
-     H3, 
      ImageContainer, 
      Image, 
      FootInformacion, 
      DietsContainer, 
      H4,
      TypesContainer,
-     P,
+     
+     
+     H3, CardCont, Img, H6, Cabeza,
+    Caracteristicas, AuxContainer, Precio
     }
 from './CardStyled';//#
 
@@ -42,30 +44,79 @@ async function handleId(id){
 //~   Retotno el componente Card   
                                                                              //#lightgoldenrodyellow
     return (
-        <CardContainer>
+       
+       
+    
+        <CardCont>
+        
+                <Img src={image} alt= 'image' 
+                onClick={() => handleId(id)}/>
+        
+               
+                <Cabeza>
+                    <AuxContainer>
+                    <H3>{name}</H3> 
+                    </AuxContainer>
+               </Cabeza>
+    
+               <Caracteristicas>
+               <AuxContainer>
+                 <H6>
+                 Diets Types:
+                 </H6> 
+                 {diets?.map((diet, index) => <> {diet}, </> )}
+               </AuxContainer>
 
-               <ImageContainer onClick={() => handleId(id)}>
-                   <Image src={image} alt= 'image not Found'/>
-               </ImageContainer>
+               <AuxContainer>
+               <H6>
+                  Dish Types:
+               </H6>
+                 {types?.map((dish, index)=> <> {dish.name ? dish.name : dish}, </>)}
+ 
+               </AuxContainer>
+    
+                
+               </Caracteristicas>
+    
+               {/* <Precio>
+                     {}
+               </Precio> */}
+    
+          </CardCont>
+        
+        
+       
+       
+       
+       
+       
+       
+       
+       
+//        <CardContainer>
 
-               <TittleContainer>
-                   <H3>{name}</H3>
-               </TittleContainer>
+//                <ImageContainer onClick={() => handleId(id)}>
+//                    <Image src={image} alt= 'image not Found'/>
+//                </ImageContainer>
+
+//                <TittleContainer>
+//                    <H3>{name}</H3>
+//                </TittleContainer>
 
 
-        <FootInformacion>
-               <DietsContainer>
-                    <H4>Diets Types</H4>
-                    {diets?.map((diet, index) => <P key={index} >{diet}</P>)}
-                </DietsContainer>
+//         <FootInformacion>
+//                <DietsContainer>
+//                     <H4>Diets Types</H4>
+//                     {diets?.map((diet, index) => <P key={index} >{diet}</P>)}
+//                 </DietsContainer>
 
-                <TypesContainer>
-                    <H4>Dish Types</H4>
-                    {types?.map((dish, index)=> <P key={index} >{dish.name ? dish.name : dish}</P>)}
-                </TypesContainer>
-        </FootInformacion>
+//                 <TypesContainer>
+//                     <H4>Dish Types</H4>
+//                     {types?.map((dish, index)=> <P key={index} >{dish.name ? dish.name : dish}</P>)}
+//                 </TypesContainer>
+//         </FootInformacion>
 
-  </CardContainer>
+//   </CardContainer>
     )
 }//#
 

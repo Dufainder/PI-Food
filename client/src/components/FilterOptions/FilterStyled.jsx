@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const OptionsContainer = styled.div`
 
   position: absolute;
-  left:84%;
+  left:80%;
   top: 200px;
   bottom: 10 px;
   background-color: transparent;

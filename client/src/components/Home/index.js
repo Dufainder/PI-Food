@@ -1,6 +1,7 @@
 //#cyan
-import Card  from '../Card';
 import React, {useEffect, useState} from 'react';
+import Card  from '../Card';
+import Navbar from '../navbar/indexNavbar';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 import { getRecipesAll,getTypes} from '../actions/index'
@@ -11,6 +12,7 @@ import  {
   ContenedorDiets, 
   ContainerCards,
   ContainerPagination,
+  MarginContenedor,
  }from './HomeStyled'
 import SearchBar from '../SearchBar'
 import Pagination from '../pagination'
@@ -54,36 +56,48 @@ function Home() {
     return (
         
             <>
-              <SearchBar/>
+            <header>
+
+              <Navbar>
+
+              {/* <SearchBar/>
               <LogoSVG/>
               
               <Link to='/create'>
                   <CreateRecipeSVG/>
-              </Link>
+              </Link> */}
+              </Navbar>
+            </header>
                  
-              <Link to='/diets'>
+              {/* <Link to='/diets'>
                 <ContenedorDiets>
                   <LogoDietsSVG/>
                   <TextDietsSVG/>
                 </ContenedorDiets>
-              </Link>
+              </Link> */}
+
+               <body>
 
               <FilterOptions typesAll={typesAll}  setOrder={setOrder} setCurrentPage={setCurrentPage} />
              
-              <div className = 'pag-body'>
+              <div >
                     {recipesAll.length > 0 ?
                     <ContainerCards>
+                      <MarginContenedor>
+
 
                     {currentRecipes?.map((recipe, index) => {
-                    return(    
-                        <div key={index}> 
+                      return(    
+                        <> 
                             <Card key={recipe.id} id={recipe.idApi ? recipe.idApi : recipe.id} name={recipe.name} image={recipe.image} types={recipe.types} diets={recipe.diets}/>
-                        </div>
+                        </>
                         )
-                    })}
+                      })}
+                      </MarginContenedor>
                     </ContainerCards>
                     : <LoaderFood/>}
                 </div>
+               </body>
                 
                 <ContainerPagination>
                     <Pagination
